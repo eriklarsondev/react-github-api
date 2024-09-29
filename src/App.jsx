@@ -1,5 +1,13 @@
+import { GithubRepos } from './components/GithubRepos'
+
 function App() {
-  return <></>
+  const username = 'eriklarsondev'
+
+  return (
+    <>
+      <GithubRepos username={username} />
+    </>
+  )
 }
 
 export default App
