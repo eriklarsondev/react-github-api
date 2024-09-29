@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { githubService } from '../services/github.service'
 
 export function GithubRepos({ username }) {
-  const [repos, setRepos] = useState(null)
+  const [repos, setRepos] = useState()
 
   useEffect(() => {
-    fetch(`https://api.github.com/users/${username}/repos`)
-      .then(response => {
-        setRepos(response.data)
+    githubService
+      .getRepos(username)
+      .then(res => {
+        setRepos(res)
       })
-      .catch(error => console.error(error))
+      .catch(err => console.log(err))
   }, [username])
 
   return (
